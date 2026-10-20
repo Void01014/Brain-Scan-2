@@ -1,0 +1,16 @@
+# Development-only Airflow. Its Linux container is separate from the Windows ML venv.
+services:
+  airflow:
+    image: apache/airflow:3.3.2-python3.12
+    command: standalone
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__PARALLELISM: "2"
+    volumes:
+      - airflow-home:/opt/airflow
+      - ./airflow/dags:/opt/airflow/dags:ro
+    restart: "no"
+volumes:
+  airflow-home:

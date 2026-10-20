@@ -1,0 +1,60 @@
+Ce projet combine la détection de tumeurs cérébrales (YOLOv8) et la classification de cellules sanguines cancéreuses (PyTorch) dans une solution unifiée d’analyse d’images médicales par deep learning, visant un diagnostic assisté précis et automatisé.
+- [2023] Certification RNCP Développeur.se en intelligence artificielle
+- Compétences transversales
+- [Brain detection](https://www.kaggle.com/datasets/ahmedsorour1/mri-for-brain-tumor-with-bounding-boxes?select=Train "Brain detection")
+Vous êtes développeur IA junior au sein d’un laboratoire biomédical spécialisé en imagerie médicale. Le laboratoire souhaite développer une solution d’analyse automatisée d’images cérébrales afin d’assister les spécialistes dans l’identification et la localisation des tumeurs cérébrales.
+Votre mission consiste à concevoir une solution unifiée basée sur le Deep Learning, intégrant deux approches complémentaires :
+- La classification d’images cérébrales à l’aide d’un modèle pré-entraîné basé sur GoogLeNet et TensorFlow/Keras.
+- La détection et la localisation des tumeurs cérébrales à l’aide de YOLOv8.
+- Vous devrez également mettre en place un système de suivi des expériences, automatiser les étapes du pipeline et exposer les modèles à travers des API REST, consommées par une interface Streamlit.
+- Charger les images, vérifier extensions et intégrité (try-except), écarter les fichiers invalides.
+- Explorer les classes (noms de dossiers), countplot, afficher un échantillon par classe.
+- Répartir les images en trois ensembles : Train (70 %), Validation (15 %) et Test (15 %), puis compter et afficher le nombre d’images dans chaque ensemble.
+- Appliquer des techniques d’augmentation des données, telles que le flou (blur), l’ajout de bruit (noise) et le retournement (flip), uniquement sur les données d’entraînement, afin d’enrichir les échantillons et de réduire les déséquilibres entre les classes.
+- Charger avec imagedatasetfrom_directory() (redimensionnement, batch, shuffle=True pour le train), puis normaliser selon le modèle.
+- Charger le modèle préentraîné GoogLeNet (InceptionV1), geler ses couches de base, remplacer sa tête de classification par une nouvelle adaptée au nombre de classes du dataset, puis entraîner uniquement cette dernière pour effectuer le Feature Extraction.
+- Déterminer les hyperparamètres d’entraînement, notamment le learning rate, la fonction de perte (loss function) et l’optimiseur (optimizer).
+- Entraîner le modèle en utilisant l’ensemble d’entraînement et suivre ses performances sur l’ensemble de validation.
+- Évaluer le modèle à l’aide de métriques adaptées, notamment l’accuracy, la précision (precision), le rappel (recall) et le F1-score.
+- Analyser les résultats à l’aide d’une matrice de confusion et comparer les performances sur les ensembles d’entraînement et de test.
+- Dégeler les dernières couches du modèle préentraîné, poursuivre le fine-tuning avec un faible learning rate, puis réévaluer le modèle et comparer ses performances avec celles du modèle obtenu après le Feature Extraction.
+- Sauvegarder le modèle entraîné.
+- Afficher un échantillon d’images avec leurs boîtes englobantes (bounding boxes) et les classes correspondantes.
+- Vérifier, pour chaque image, l’existence d’un fichier .txt correspondant dans le répertoire des annotations, en comparant les noms de base des fichiers.
+- Organiser les données dans les dossiers images et labels, en respectant les ensembles train, valid et test.
+- Copier chaque image accompagnée de son fichier d’annotation correspondant vers l’ensemble approprié.
+- Écarter les images sans annotation correspondante et les fichiers d’annotation sans image associée.
+- Vérifier la validité du format des annotations YOLO et la cohérence des classes.
+- Compter les images et les fichiers d’annotation présents dans chaque ensemble.
+- Créer un fichier data.yaml contenant les chemins des ensembles d’entraînement, de validation et de test, le nombre de classes et leurs noms.
+- Définir les paramètres d’augmentation des données dans la configuration d’entraînement de YOLOv8.
+- Entraîner le modèle YOLOv8 en choisissant des hyperparamètres adaptés au dataset et aux ressources disponibles.
+- Évaluer les performances à l’aide des métriques adaptées à la détection d’objets, notamment la précision, le rappel, la mAP@0.5 et la mAP@0.5:0.95.
+- Analyser les résultats et vérifier la capacité de généralisation du modèle sur l’ensemble de test.
+- Sauvegarder le modèle entraîné et les artefacts nécessaires à son utilisation.
+- Configurer une expérience MLflow pour suivre les entraînements.
+- Enregistrer les hyperparamètres utilisés, les métriques obtenues et les artefacts pertinents.
+- Comparer plusieurs expériences afin d’identifier la configuration la plus performante.
+- Enregistrer le modèle retenu et conserver les informations nécessaires à son identification et à sa réutilisation.
+- Créer un DAG Airflow représentant le pipeline de traitement des données et d’entraînement.
+- Organiser les tâches dans un ordre logique :
+- Vérification et préparation des datasets.
+- Validation de la structure et de la qualité des données.
+- Entraînement du modèle de classification.
+- Entraînement du modèle de détection.
+- Évaluation des modèles et enregistrement des résultats dans MLflow.
+- Sauvegarde des modèles et des artefacts produits.
+- Configurer la gestion des erreurs, les journaux d’exécution (logs) et le suivi des statuts des tâches.
+- Développer une interface Streamlit permettant de téléverser une image cérébrale.
+- Proposer deux fonctionnalités distinctes :
+- Classification de l’image cérébrale.
+- Détection et localisation des tumeurs cérébrales.
+- Connecter Streamlit aux endpoints FastAPI à l’aide de requêtes HTTP.
+- Afficher la classe prédite, les scores de confiance et les résultats de classification.
+- Afficher l’image avec les boîtes englobantes et les informations de détection retournées par YOLOv8.
+Organisation : travail individuel.
+Durée de travail : 10 jours.
+Période : du 19/10/2026 au 30/10/2026, avant minuit.
+- Démonstration — 10 minutes : présentation rapide de la solution, des deux modèles, des API et de l’interface Streamlit. - Code review et culture projet — 10 minutes : examen de l’organisation du code, de la qualité des développements, du suivi MLflow et de l’orchestration Airflow. - Mise en situation — 10 minutes : modification, test ou amélioration d’une fonctionnalité, avec justification des choix techniques.
+- Code source du projet sur GitHub, avec une organisation claire des différents composants. - Planification du travail. - Scripts de préparation des données et d’entraînement des modèles. - Configuration et DAG Apache Airflow. - Expériences et résultats de suivi MLflow. - API FastAPI avec documentation des endpoints. - Interface Streamlit connectée aux API. - Instructions d’installation et d’exécution du projet dans un fichier README.md. 
+1. Qualité des modèles Performance des prédictions : obtenir des résultats satisfaisants sur l’ensemble de test, évalués à l’aide de métriques adaptées à chaque tâche. Optimisation des hyperparamètres : comparer différentes configurations et justifier les choix retenus. Robustesse et généralisation : limiter le surapprentissage et vérifier les performances sur des données non utilisées pendant l’entraînement. 2. Qualité du pipeline et du suivi des expériences Automatisation : garantir une exécution cohérente des tâches définies dans Airflow. Traçabilité : assurer le suivi des paramètres, des métriques et des versions des modèles avec MLflow. Fiabilité : gérer les erreurs et conserver des journaux d’exécution exploitables. 3. Qualité de l’architecture et de l’intégration API : concevoir des endpoints FastAPI fonctionnels, documentés et capables de gérer les erreurs. Interface utilisateur : proposer une interface Streamlit claire et correctement connectée aux API. Intégration : assurer la communication entre les modèles, les API et l’interface utilisateur. 4. Efficacité et qualité du code Lisibilité et organisation : produire un code clair, modulaire, structuré et facile à maintenir. Performance computationnelle : limiter les traitements inutiles et optimiser l’utilisation des ressources disponibles. Gestion des erreurs : garantir un comportement approprié en présence de fichiers invalides, de requêtes incorrectes ou d’échecs d’exécution. Reproductibilité : documenter les dépendances, les configurations et les étapes nécessaires pour exécuter la solution.

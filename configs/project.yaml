@@ -1,0 +1,15 @@
+seed: 42
+classification:
+  architecture: googlenet_inception_v1
+  implementation: pending_verified_pretrained_keras_implementation
+  data_dir: data/raw/classification
+  image_size: [224, 224]
+  batch_size: 16
+detection:
+  architecture: yolov8n
+  data_dir: data/raw/detection
+  image_size: 640
+splits:
+  train: 0.70
+  validation: 0.15
+  test: 0.15
