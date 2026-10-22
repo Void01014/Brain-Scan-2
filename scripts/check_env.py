@@ -23,12 +23,16 @@ def main():
     from api.main import app
     import mlflow
 
+    print("Checking TensorFlow tensor operation...", flush=True)
     assert float(tf.reduce_sum(tf.constant([1.0, 2.0])).numpy()) == 3.0
+    print("Checking PyTorch tensor operation...", flush=True)
     assert torch.tensor([1, 2]).sum().item() == 3
+    print("Checking API health route...", flush=True)
     with TestClient(app) as client:
         response = client.get("/health")
         assert response.status_code == 200
         assert response.json() == {"status": "ok", "models_ready": False}
+    print("Checking MLflow storage...", flush=True)
     mlflow.set_tracking_uri(f"sqlite:///{(ROOT / 'mlflow.db').as_posix()}")
     mlflow.set_experiment("environment-smoke-test")
     with mlflow.start_run(run_name="setup-verification") as run:

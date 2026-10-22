@@ -1,0 +1,7 @@
+split,category,relative_path,extension,size_bytes,annotation_exists,readable,width,height,mode,image_format,error,warning,supported_extension,extension_format_mismatch
+Train,No Tumor,data/Train/No Tumor/images/Tr-no_1011.jpg,.jpg,306492,True,True,550,664,RGBA,PNG,,,True,True
+Train,No Tumor,data/Train/No Tumor/images/Tr-no_1012.jpg,.jpg,157613,True,True,728,725,P,PNG,,,True,True
+Train,No Tumor,data/Train/No Tumor/images/Tr-no_1019.jpg,.jpg,118796,True,True,393,400,RGBA,PNG,,,True,True
+Train,No Tumor,data/Train/No Tumor/images/Tr-no_1020.jpg,.jpg,160131,True,True,442,454,RGBA,PNG,,,True,True
+Val,No Tumor,data/Val/No Tumor/images/image(55).jpg,.jpg,13121,False,True,236,243,RGB,JPEG,,,True,False
+Val,No Tumor,data/Val/No Tumor/images/image(61).jpg,.jpg,15401,False,True,218,234,RGB,JPEG,,,True,False

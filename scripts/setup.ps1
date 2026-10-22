@@ -14,7 +14,7 @@ if ($LASTEXITCODE -ne 0) { throw 'pip bootstrap failed.' }
 $requirements = if (Test-Path requirements-lock.txt) { 'requirements-lock.txt' } else { 'requirements.txt' }
 & $venvPython -m pip install -r $requirements
 if ($LASTEXITCODE -ne 0) { throw 'Dependency installation failed.' }
-& $venvPython -m pip install --no-deps -e .
+& $venvPython -m pip install --no-deps --no-build-isolation -e .
 if ($LASTEXITCODE -ne 0) { throw 'Project package installation failed.' }
 if (-not (Test-Path '.env')) { Copy-Item .env.example .env }
 & $venvPython scripts/check_env.py

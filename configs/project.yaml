@@ -2,7 +2,7 @@ seed: 42
 classification:
   architecture: googlenet_inception_v1
   implementation: pending_verified_pretrained_keras_implementation
-  data_dir: data/raw/classification
+  data_dir: data/processed/classification
   image_size: [224, 224]
   batch_size: 16
 detection:
